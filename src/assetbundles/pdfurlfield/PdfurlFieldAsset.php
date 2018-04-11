@@ -8,7 +8,7 @@
  * @copyright Copyright (c) 2018 Andy Skogrand
  */
 
-namespace bletchleyllc\pdffield\assetbundles\pdfurlfield;
+namespace bletchley\pdffield\assetbundles\pdfurlfield;
 
 use Craft;
 use craft\web\AssetBundle;
@@ -43,7 +43,7 @@ class PdfurlFieldAsset extends AssetBundle
     public function init()
     {
         // define the path that your publishable resources live
-        $this->sourcePath = "@bletchleyllc/pdffield/assetbundles/pdfurlfield/dist";
+        $this->sourcePath = "@bletchley/pdffield/assetbundles/pdfurlfield/dist";
 
         // define the dependencies
         $this->depends = [

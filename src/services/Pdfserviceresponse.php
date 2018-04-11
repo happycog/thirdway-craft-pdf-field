@@ -8,9 +8,9 @@
  * @copyright Copyright (c) 2018 Andy Skogrand
  */
 
-namespace bletchleyllc\pdffield\services;
+namespace bletchley\pdffield\services;
 
-use bletchleyllc\pdffield\PdfField;
+use bletchley\pdffield\PdfField;
 
 use Craft;
 use craft\base\Component;

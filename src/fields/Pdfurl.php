@@ -8,10 +8,10 @@
  * @copyright Copyright (c) 2018 Andy Skogrand
  */
 
-namespace bletchleyllc\pdffield\fields;
+namespace bletchley\pdffield\fields;
 
-use bletchleyllc\pdffield\PdfField;
-use bletchleyllc\pdffield\assetbundles\pdfurlfield\PdfurlFieldAsset;
+use bletchley\pdffield\PdfField;
+use bletchley\pdffield\assetbundles\pdfurlfield\PdfurlFieldAsset;
 
 use Craft;
 use craft\base\ElementInterface;

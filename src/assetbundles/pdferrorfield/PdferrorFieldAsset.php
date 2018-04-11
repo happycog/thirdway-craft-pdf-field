@@ -8,7 +8,7 @@
  * @copyright Copyright (c) 2018 Andy Skogrand
  */
 
-namespace bletchleyllc\pdffield\assetbundles\pdferrorfield;
+namespace bletchley\pdffield\assetbundles\pdferrorfield;
 
 use Craft;
 use craft\web\AssetBundle;
@@ -43,7 +43,7 @@ class PdferrorFieldAsset extends AssetBundle
     public function init()
     {
         // define the path that your publishable resources live
-        $this->sourcePath = "@bletchleyllc/pdffield/assetbundles/pdferrorfield/dist";
+        $this->sourcePath = "@bletchley/pdffield/assetbundles/pdferrorfield/dist";
 
         // define the dependencies
         $this->depends = [

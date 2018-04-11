@@ -1,5 +1,5 @@
 {
-    "name": "bletchleyllc/pdf-field",
+    "name": "bletchley/pdf-field",
     "description": "Requests a new PDF for a product on save",
     "type": "craft-plugin",
     "version": "1.0.0",
@@ -26,7 +26,7 @@
     },
     "autoload": {
         "psr-4": {
-          "bletchleyllc\\pdffield\\": "src/"
+          "bletchley\\pdffield\\": "src/"
         }
     },
     "extra": {
@@ -36,8 +36,8 @@
         "hasCpSection": false,
         "changelogUrl": "https://raw.githubusercontent.com/https://github.com/bletchley/craft-pdf-field/pdf-field/master/CHANGELOG.md",
         "components": {
-            "pdfserviceresponse": "bletchleyllc\\pdffield\\services\\Pdfserviceresponse"
+            "pdfserviceresponse": "bletchley\\pdffield\\services\\Pdfserviceresponse"
         },
-        "class": "bletchleyllc\\pdffield\\PdfField"
+        "class": "bletchley\\pdffield\\PdfField"
     }
 }

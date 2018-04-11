@@ -8,11 +8,11 @@
  * @copyright Copyright (c) 2018 Andy Skogrand
  */
 
-namespace bletchleyllc\pdffield;
+namespace bletchley\pdffield;
 
-use bletchleyllc\pdffield\services\Pdfserviceresponse as PdfserviceresponseService;
-use bletchleyllc\pdffield\fields\Pdfurl as PdfurlField;
-use bletchleyllc\pdffield\fields\Pdferror as PdferrorField;
+use bletchley\pdffield\services\Pdfserviceresponse as PdfserviceresponseService;
+use bletchley\pdffield\fields\Pdfurl as PdfurlField;
+use bletchley\pdffield\fields\Pdferror as PdferrorField;
 
 use Craft;
 use craft\base\Plugin;
