@@ -1,4 +1,4 @@
-# PDF Field plugin for Craft CMS 3.x
+# PDF Renderer plugin for Craft CMS 3.x
 
 Requests a new PDF for a product on save
 
@@ -18,26 +18,26 @@ To install the plugin, follow these instructions.
 
 2. Then tell Composer to load the plugin:
 
-        composer require https://github.com/bletchley/craft-pdf-field/pdf-field
+        composer require bletchley/craft-pdf-field/pdf-renderer
 
-3. In the Control Panel, go to Settings → Plugins and click the “Install” button for PDF Field.
+3. In the Control Panel, go to Settings → Plugins and click the “Install” button for PDF Renderer.
 
-## PDF Field Overview
-
--Insert text here-
-
-## Configuring PDF Field
+## PDF Renderer Overview
 
 -Insert text here-
 
-## Using PDF Field
+## Configuring PDF Renderer
 
 -Insert text here-
 
-## PDF Field Roadmap
+## Using PDF Renderer
+
+-Insert text here-
+
+## PDF Renderer Roadmap
 
 Some things to do, and ideas for potential features:
 
 * Release it
 
-Brought to you by [Andy Skogrand](http://bletchley.co/)
+Brought to you by [Andy Skogrand](http://bletchley.co)

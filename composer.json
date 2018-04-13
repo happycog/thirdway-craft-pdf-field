@@ -1,5 +1,5 @@
 {
-    "name": "bletchley/pdf-field",
+    "name": "bletchley/pdf-renderer",
     "description": "Requests a new PDF for a product on save",
     "type": "craft-plugin",
     "version": "1.0.0",
@@ -8,17 +8,17 @@
         "cms",
         "craftcms",
         "craft-plugin",
-        "pdf field"
+        "pdf renderer"
     ],
     "support": {
-        "docs": "https://github.com/https://github.com/bletchley/craft-pdf-field/pdf-field/blob/master/README.md",
-        "issues": "https://github.com/https://github.com/bletchley/craft-pdf-field/pdf-field/issues"
+        "docs": "https://github.com/bletchley/craft-pdf-field/pdf-renderer/blob/master/README.md",
+        "issues": "https://github.com/bletchley/craft-pdf-field/pdf-renderer/issues"
     },
     "license": "MIT",
     "authors": [
         {
             "name": "Andy Skogrand",
-            "homepage": "http://bletchley.co/"
+            "homepage": "http://bletchley.co"
         }
     ],
     "require": {
@@ -26,18 +26,15 @@
     },
     "autoload": {
         "psr-4": {
-          "bletchley\\pdffield\\": "src/"
+          "bletchley\\pdfrenderer\\": "src/"
         }
     },
     "extra": {
-        "name": "PDF Field",
-        "handle": "pdf-field",
+        "name": "PDF Renderer",
+        "handle": "pdf-renderer",
         "hasCpSettings": false,
         "hasCpSection": false,
-        "changelogUrl": "https://raw.githubusercontent.com/https://github.com/bletchley/craft-pdf-field/pdf-field/master/CHANGELOG.md",
-        "components": {
-            "pdfserviceresponse": "bletchley\\pdffield\\services\\Pdfserviceresponse"
-        },
-        "class": "bletchley\\pdffield\\PdfField"
+        "changelogUrl": "https://raw.githubusercontent.com/bletchley/craft-pdf-field/pdf-renderer/master/CHANGELOG.md",
+        "class": "bletchley\\pdfrenderer\\PdfRenderer"
     }
 }

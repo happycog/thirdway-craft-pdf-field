@@ -1,18 +1,18 @@
 /**
- * PDF Field plugin for Craft CMS
+ * PDF Renderer plugin for Craft CMS
  *
- * Pdfurl Field JS
+ * ResourceError Field JS
  *
  * @author    Andy Skogrand
  * @copyright Copyright (c) 2018 Andy Skogrand
- * @link      http://bletchley.co/
- * @package   PdfField
- * @since     1.0.0PdfFieldPdfurl
+ * @link      http://bletchley.co
+ * @package   PdfRenderer
+ * @since     1.0.0PdfRendererResourceError
  */
 
  ;(function ( $, window, document, undefined ) {
 
-    var pluginName = "PdfFieldPdfurl",
+    var pluginName = "PdfRendererResourceError",
         defaults = {
         };
 

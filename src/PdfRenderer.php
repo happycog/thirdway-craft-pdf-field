@@ -1,18 +1,17 @@
 <?php
 /**
- * PDF Field plugin for Craft CMS 3.x
+ * PDF Renderer plugin for Craft CMS 3.x
  *
  * Requests a new PDF for a product on save
  *
- * @link      http://bletchley.co/
+ * @link      http://bletchley.co
  * @copyright Copyright (c) 2018 Andy Skogrand
  */
 
-namespace bletchley\pdffield;
+namespace bletchley\pdfrenderer;
 
-use bletchley\pdffield\services\Pdfserviceresponse as PdfserviceresponseService;
-use bletchley\pdffield\fields\Pdfurl as PdfurlField;
-use bletchley\pdffield\fields\Pdferror as PdferrorField;
+use bletchley\pdfrenderer\fields\ResourceUrl as ResourceUrlField;
+use bletchley\pdfrenderer\fields\ResourceError as ResourceErrorField;
 
 use Craft;
 use craft\base\Plugin;
@@ -34,21 +33,20 @@ use yii\base\Event;
  * https://craftcms.com/docs/plugins/introduction
  *
  * @author    Andy Skogrand
- * @package   PdfField
+ * @package   PdfRenderer
  * @since     1.0.0
  *
- * @property  PdfserviceresponseService $pdfserviceresponse
  */
-class PdfField extends Plugin
+class PdfRenderer extends Plugin
 {
     // Static Properties
     // =========================================================================
 
     /**
      * Static property that is an instance of this plugin class so that it can be accessed via
-     * PdfField::$plugin
+     * PdfRenderer::$plugin
      *
-     * @var PdfField
+     * @var PdfRenderer
      */
     public static $plugin;
 
@@ -67,7 +65,7 @@ class PdfField extends Plugin
 
     /**
      * Set our $plugin static property to this class so that it can be accessed via
-     * PdfField::$plugin
+     * PdfRenderer::$plugin
      *
      * Called after the plugin class is instantiated; do any one-time initialization
      * here such as hooks and events.
@@ -86,8 +84,8 @@ class PdfField extends Plugin
             Fields::class,
             Fields::EVENT_REGISTER_FIELD_TYPES,
             function (RegisterComponentTypesEvent $event) {
-                $event->types[] = PdfurlField::class;
-                $event->types[] = PdferrorField::class;
+                $event->types[] = ResourceUrlField::class;
+                $event->types[] = ResourceErrorField::class;
             }
         );
 
@@ -122,7 +120,7 @@ class PdfField extends Plugin
  */
         Craft::info(
             Craft::t(
-                'pdf-field',
+                'pdf-renderer',
                 '{name} plugin loaded',
                 ['name' => $this->name]
             ),

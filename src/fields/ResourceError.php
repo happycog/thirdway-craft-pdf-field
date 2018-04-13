@@ -1,17 +1,17 @@
 <?php
 /**
- * PDF Field plugin for Craft CMS 3.x
+ * PDF Renderer plugin for Craft CMS 3.x
  *
  * Requests a new PDF for a product on save
  *
- * @link      http://bletchley.co/
+ * @link      http://bletchley.co
  * @copyright Copyright (c) 2018 Andy Skogrand
  */
 
-namespace bletchley\pdffield\fields;
+namespace bletchley\pdfrenderer\fields;
 
-use bletchley\pdffield\PdfField;
-use bletchley\pdffield\assetbundles\pdfurlfield\PdfurlFieldAsset;
+use bletchley\pdfrenderer\PdfRenderer;
+use bletchley\pdfrenderer\assetbundles\resourceerrorfield\ResourceErrorFieldAsset;
 
 use Craft;
 use craft\base\ElementInterface;
@@ -21,7 +21,7 @@ use yii\db\Schema;
 use craft\helpers\Json;
 
 /**
- * Pdfurl Field
+ * ResourceError Field
  *
  * Whenever someone creates a new field in Craft, they must specify what
  * type of field it is. The system comes with a handful of field types baked in,
@@ -30,10 +30,10 @@ use craft\helpers\Json;
  * https://craftcms.com/docs/plugins/field-types
  *
  * @author    Andy Skogrand
- * @package   PdfField
+ * @package   PdfRenderer
  * @since     1.0.0
  */
-class Pdfurl extends Field
+class ResourceError extends Field
 {
     // Public Properties
     // =========================================================================
@@ -55,7 +55,7 @@ class Pdfurl extends Field
      */
     public static function displayName(): string
     {
-        return Craft::t('pdf-field', 'Pdfurl');
+        return Craft::t('pdf-renderer', 'ResourceError');
     }
 
     // Public Methods
@@ -229,7 +229,7 @@ class Pdfurl extends Field
     {
         // Render the settings template
         return Craft::$app->getView()->renderTemplate(
-            'pdf-field/_components/fields/Pdfurl_settings',
+            'pdf-renderer/_components/fields/ResourceError_settings',
             [
                 'field' => $this,
             ]
@@ -336,7 +336,7 @@ class Pdfurl extends Field
     public function getInputHtml($value, ElementInterface $element = null): string
     {
         // Register our asset bundle
-        Craft::$app->getView()->registerAssetBundle(PdfurlFieldAsset::class);
+        Craft::$app->getView()->registerAssetBundle(ResourceErrorFieldAsset::class);
 
         // Get our id and namespace
         $id = Craft::$app->getView()->formatInputId($this->handle);
@@ -350,11 +350,11 @@ class Pdfurl extends Field
             'prefix' => Craft::$app->getView()->namespaceInputId(''),
             ];
         $jsonVars = Json::encode($jsonVars);
-        Craft::$app->getView()->registerJs("$('#{$namespacedId}-field').PdfFieldPdfurl(" . $jsonVars . ");");
+        Craft::$app->getView()->registerJs("$('#{$namespacedId}-field').PdfRendererResourceError(" . $jsonVars . ");");
 
         // Render the input template
         return Craft::$app->getView()->renderTemplate(
-            'pdf-field/_components/fields/Pdfurl_input',
+            'pdf-renderer/_components/fields/ResourceError_input',
             [
                 'name' => $this->handle,
                 'value' => $value,
