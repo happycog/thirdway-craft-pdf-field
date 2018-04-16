@@ -1,0 +1,25 @@
+{# @var craft \craft\web\twig\variables\CraftVariable #}
+{#
+/**
+ * PDF Renderer plugin for Craft CMS 3.x
+ *
+ * Resource Field Input
+ *
+ * @author    Andy Skogrand
+ * @copyright Copyright (c) 2018 Andy Skogrand
+ * @link      http://bletchley.co
+ * @package   PdfRenderer
+ * @since     1.0.0
+ */
+#}
+
+{% if value is same as(false) %}
+  <p>There was an error generating the PDF</p>
+{% elseif value is same as(true) %}
+  <p>PDF is available</p>
+{% else %}
+  <p>PDF has not been generated</p>
+{% endif %}
+
+{{value}}
+<input type="text" name="{{name}}" value="null" />
