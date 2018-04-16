@@ -37,6 +37,14 @@ use yii\base\Event;
  * @since     1.0.0
  *
  */
+
+/**
+* 0: A PDF has not been generated
+* 1: PDF Saved
+* 2: An error occurred saving the PDF
+* 3: A PDF is being generated
+*/
+
 class pdfrenderer extends Plugin
 {
     // Static Properties
@@ -79,15 +87,12 @@ class pdfrenderer extends Plugin
             Elements::class,
             Elements::EVENT_BEFORE_SAVE_ELEMENT,
             function ($event) {
-                var_dump($event->element);
-                die();
-                if($event->element->productPdf === "null") {
-                    unset($event->element->productPdf);
-                    // $ch = curl_init();
-                    // curl_setopt($ch, CURLOPT_URL, "https://thirdway-pdf-renderer.herokuapp.com/" . $event->element->id . "/" .$event->element->uri);
-                    // curl_setopt($ch, CURLOPT_URL, "http://localhost:8090/" . $event->element->uri);
-                    // curl_exec($ch);
-                    // curl_close($ch);
+                // Use env for the URL below
+                if((int)$event->element->productPdf === 3 && $event->element->enabled) {
+                    $ch = curl_init();
+                    curl_setopt($ch, CURLOPT_URL, "https://thirdway-pdf-renderer.herokuapp.com/" . $event->element->id . "/" .$event->element->uri);
+                    curl_exec($ch);
+                    curl_close($ch);
                 }
             }
         );

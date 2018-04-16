@@ -29,6 +29,8 @@ class Pdfresource extends Field
 {
     // Public Properties
     // =========================================================================
+    public $codes = [0, 1, 2, 3];
+    public $error_code = 2;
 
     // Static Methods
     // =========================================================================
@@ -49,7 +51,7 @@ class Pdfresource extends Field
      */
     public function getContentColumnType(): string
     {
-        return Schema::TYPE_BOOLEAN;
+        return Db::getNumericalColumnType(0, 3, 0);
     }
 
     /**
@@ -64,21 +66,21 @@ class Pdfresource extends Field
     /**
      * @inheritdoc
      */
-    public function normalizeValue($value, ElementInterface $element = null)
+    public function serializeValue($value, ElementInterface $element = null)
     {
-        // Unlike other boolean fields, null is an option
-        // False = error occurred
-        // True = pdf exists
-        return ($value === null) ? $value : (bool) $value ;
+        // Limit options that can be saved
+        if (in_array((int)$value, $codes)) {
+            return (int)$value;
+        }
+        return $error_code;
     }
 
     /**
      * @inheritdoc
      */
-    public function serializeValue($value, ElementInterface $element = null)
+    public function normalizeValue($value, ElementInterface $element = null)
     {
-        var_dump($value);
-        return parent::serializeValue($value, $element);
+        return $value;
     }
 
     /**

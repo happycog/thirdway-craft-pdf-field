@@ -35,10 +35,6 @@ class pdfresourcefieldAsset extends AssetBundle
             CpAsset::class,
         ];
 
-        $this->js = [
-            'js/Pdfresource.js',
-        ];
-
         $this->css = [
             'css/Pdfresource.css',
         ];
