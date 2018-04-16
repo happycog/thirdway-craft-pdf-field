@@ -87,10 +87,10 @@ class pdfrenderer extends Plugin
             Elements::class,
             Elements::EVENT_BEFORE_SAVE_ELEMENT,
             function ($event) {
-                // Use env for the URL below
-                if((int)$event->element->productPdf === 3 && $event->element->enabled) {
+                $pdfUrl = Craft::$app->config->general->pdfServiceUrl;
+                if($pdfUrl && (int)$event->element->productPdf === 3 && $event->element->enabled) {
                     $ch = curl_init();
-                    curl_setopt($ch, CURLOPT_URL, "https://thirdway-pdf-renderer.herokuapp.com/" . $event->element->id . "/" .$event->element->uri);
+                    curl_setopt($ch, CURLOPT_URL, $pdfUrl . $event->element->id . "/" .$event->element->uri);
                     curl_exec($ch);
                     curl_close($ch);
                 }

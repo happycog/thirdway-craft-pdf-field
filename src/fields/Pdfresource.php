@@ -69,7 +69,7 @@ class Pdfresource extends Field
     public function serializeValue($value, ElementInterface $element = null)
     {
         // Limit options that can be saved
-        if (in_array((int)$value, $codes)) {
+        if (in_array((int)$value, $this->codes)) {
             return (int)$value;
         }
         return $error_code;
