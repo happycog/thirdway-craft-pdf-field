@@ -94,6 +94,7 @@ class Pdfresource extends Field
         // Get our id and namespace
         $id = Craft::$app->getView()->formatInputId($this->handle);
         $namespacedId = Craft::$app->getView()->namespaceInputId($id);
+        $volume = Craft::$app->getVolumes()->getAllVolumes()[0];
 
         // Render the input template
         return Craft::$app->getView()->renderTemplate(
@@ -104,6 +105,8 @@ class Pdfresource extends Field
                 'field' => $this,
                 'id' => $id,
                 'namespacedId' => $namespacedId,
+                'slug' => $element->slug,
+                'volume' => $volume,
             ]
         );
     }
