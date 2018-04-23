@@ -88,7 +88,7 @@ class pdfrenderer extends Plugin
             Elements::EVENT_BEFORE_SAVE_ELEMENT,
             function ($event) {
                 $pdfUrl = Craft::$app->config->general->pdfServiceUrl;
-                if($pdfUrl && (int)$event->element->productPdf === 3 && $event->element->enabled) {
+                if($pdfUrl && (int)$event->element->productPdfStatus === 3 && $event->element->enabled) {
                     $ch = curl_init();
                     curl_setopt($ch, CURLOPT_URL, $pdfUrl . $event->element->id . "/" .$event->element->uri);
                     curl_exec($ch);
