@@ -89,13 +89,7 @@ class pdfrenderer extends Plugin
             function ($event) {
                 $pdfUrl = Craft::$app->config->general->pdfServiceUrl;
                 if($pdfUrl && (int)$event->element->productPdfStatus === 3 && $event->element->enabled) {
-                    $ch = curl_init();
-                    curl_setopt($ch, CURLOPT_URL, $pdfUrl . $event->element->id . "/" .$event->element->uri);
-                    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 0);
-                    curl_setopt($ch, CURLOPT_FRESH_CONNECT, true);
-                    curl_setopt($ch, CURLOPT_TIMEOUT_MS, 1);
-                    $result = curl_exec($ch);
-                    curl_close($ch);
+                    $response = file_get_contents($pdfUrl . $event->element->id . "/" .$event->element->uri);
                 }
             }
         );
