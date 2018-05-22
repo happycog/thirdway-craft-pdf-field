@@ -92,7 +92,7 @@ class pdfrenderer extends Plugin
                     $ch = curl_init();
                     curl_setopt($ch, CURLOPT_URL, $pdfUrl . $event->element->id . "/" .$event->element->uri);
                     curl_setopt($ch, CURLOPT_RETURNTRANSFER, 0);
-                    curl_exec($ch);
+                    $result = curl_exec($ch);
                     curl_close($ch);
                 }
             }
