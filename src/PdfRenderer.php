@@ -91,6 +91,7 @@ class pdfrenderer extends Plugin
                 if($pdfUrl && (int)$event->element->productPdfStatus === 3 && $event->element->enabled) {
                     $ch = curl_init();
                     curl_setopt($ch, CURLOPT_URL, $pdfUrl . $event->element->id . "/" .$event->element->uri);
+                    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 0);
                     curl_exec($ch);
                     curl_close($ch);
                 }
