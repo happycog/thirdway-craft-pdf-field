@@ -29,6 +29,8 @@ use craft\services\Elements;
 
 use yii\base\Event;
 
+use bletchley\pdfrenderer\jobs\PurgeCacheJob;
+
 /**
  * Class pdfrenderer
  *
@@ -89,8 +91,12 @@ class pdfrenderer extends Plugin
             function ($event) {
                 $pdfUrl = Craft::$app->config->general->pdfServiceUrl;
                 if($pdfUrl && (int)$event->element->productPdfStatus === 3 && $event->element->enabled) {
-                    $response = file_get_contents($pdfUrl . "pdf/" . $event->element->id . "/" .$event->element->uri);
-       }
+                    \Craft::$app->getQueue()->delay(60)->push(new PurgeCacheJob([
+                            'id' => $event->element->id,
+                            'path' => $pdfUrl . $event->element->id . "/" .$event->element->uri
+                        ]
+                    ));
+                }
             }
         );
 
