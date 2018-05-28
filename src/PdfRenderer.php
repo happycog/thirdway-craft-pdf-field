@@ -93,7 +93,7 @@ class pdfrenderer extends Plugin
                 if($pdfUrl && (int)$event->element->productPdfStatus === 3 && $event->element->enabled) {
                     \Craft::$app->getQueue()->delay(60)->push(new PurgeCacheJob([
                             'id' => $event->element->id,
-                            'path' => $pdfUrl . $event->element->id . "/" .$event->element->uri
+                            'path' => $pdfUrl . 'pdf/' . $event->element->id . "/" .$event->element->uri
                         ]
                     ));
                 }
