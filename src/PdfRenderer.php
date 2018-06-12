@@ -90,10 +90,16 @@ class pdfrenderer extends Plugin
             Elements::EVENT_BEFORE_SAVE_ELEMENT,
             function ($event) {
                 $pdfUrl = Craft::$app->config->general->pdfServiceUrl;
-                if($pdfUrl && (int)$event->element->productPdfStatus === 3 && $event->element->enabled) {
+                if(
+                    $pdfUrl
+                    && (int)$event->element->productPdfStatus === 3
+                    && $event->element->enabled
+                    && $event->element->id
+                    && $event->element->uri
+                ) {
                     \Craft::$app->getQueue()->delay(60)->push(new PurgeCacheJob([
                             'id' => $event->element->id,
-                            'path' => $pdfUrl . 'pdf/' . $event->element->id . "/" .$event->element->uri
+                            'path' => $pdfUrl . 'pdf/' . $event->element->id . "/" . $event->element->uri
                         ]
                     ));
                 }
