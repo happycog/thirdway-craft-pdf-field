@@ -35,6 +35,6 @@
         "hasCpSettings": false,
         "hasCpSection": false,
         "changelogUrl": "https://raw.githubusercontent.com/bletchley/craft-pdf-field/pdfrenderer/master/CHANGELOG.md",
-        "class": "bletchley\\pdfrenderer\\PdfRenderer"
+        "class": "bletchley\\pdfrenderer\\pdfrenderer"
     }
 }
