@@ -108,7 +108,7 @@ class pdfrenderer extends Plugin
 
         Craft::info(
             Craft::t(
-                'pdf-renderer',
+                'pdfrenderer',
                 '{name} plugin loaded',
                 ['name' => $this->name]
             ),

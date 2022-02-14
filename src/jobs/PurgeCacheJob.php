@@ -44,6 +44,6 @@ class PurgeCacheJob extends BaseJob
      */
     protected function defaultDescription(): string
     {
-        return Craft::t('pdf-renderer', 'Render PDF for ID {tag}', ['tag' => $this->id]);
+        return Craft::t('pdfrenderer', 'Render PDF for ID {tag}', ['tag' => $this->id]);
     }
 }

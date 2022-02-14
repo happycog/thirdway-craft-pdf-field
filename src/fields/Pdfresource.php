@@ -40,7 +40,7 @@ class Pdfresource extends Field
      */
     public static function displayName(): string
     {
-        return Craft::t('pdf-renderer', 'Pdf Resource');
+        return Craft::t('pdfrenderer', 'Pdf Resource');
     }
 
     // Public Methods
@@ -98,7 +98,7 @@ class Pdfresource extends Field
 
         // Render the input template
         return Craft::$app->getView()->renderTemplate(
-            'pdf-renderer/_components/fields/Pdfresource_input',
+            'pdfrenderer/_components/fields/Pdfresource_input',
             [
                 'name' => $this->handle,
                 'value' => $value,

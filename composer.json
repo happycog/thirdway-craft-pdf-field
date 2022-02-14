@@ -1,5 +1,5 @@
 {
-    "name": "bletchley/pdf-renderer",
+    "name": "bletchley/pdfrenderer",
     "description": "Requests a new PDF for a product on save",
     "type": "craft-plugin",
     "version": "1.0.0",
@@ -11,8 +11,8 @@
         "pdf renderer"
     ],
     "support": {
-        "docs": "https://github.com/bletchley/craft-pdf-field/pdf-renderer/blob/master/README.md",
-        "issues": "https://github.com/bletchley/craft-pdf-field/pdf-renderer/issues"
+        "docs": "https://github.com/bletchley/craft-pdf-field/pdfrenderer/blob/master/README.md",
+        "issues": "https://github.com/bletchley/craft-pdf-field/pdfrenderer/issues"
     },
     "license": "MIT",
     "authors": [
@@ -31,10 +31,10 @@
     },
     "extra": {
         "name": "PDF Renderer",
-        "handle": "pdf-renderer",
+        "handle": "pdfrenderer",
         "hasCpSettings": false,
         "hasCpSection": false,
-        "changelogUrl": "https://raw.githubusercontent.com/bletchley/craft-pdf-field/pdf-renderer/master/CHANGELOG.md",
+        "changelogUrl": "https://raw.githubusercontent.com/bletchley/craft-pdf-field/pdfrenderer/master/CHANGELOG.md",
         "class": "bletchley\\pdfrenderer\\PdfRenderer"
     }
 }
