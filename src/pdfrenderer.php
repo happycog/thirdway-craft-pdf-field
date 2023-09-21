@@ -25,6 +25,7 @@ use craft\base\Element;
 use craft\elements\db\ElementQuery;
 use craft\events\ElementEvent;
 use craft\events\ElementStructureEvent;
+use craft\helpers\ElementHelper;
 use craft\services\Elements;
 
 use yii\base\Event;
@@ -41,24 +42,17 @@ use bletchley\pdfrenderer\jobs\PurgeCacheJob;
  */
 
 /**
-* 0: A PDF has not been generated
+* 0: A PDF has not yet been generated
 * 1: PDF Saved
 * 2: An error occurred saving the PDF
-* 3: A PDF is being generated
 */
 
 class pdfrenderer extends Plugin
 {
-    // Static Properties
-    // =========================================================================
-
     /**
      * @var pdfrenderer
      */
     public static $plugin;
-
-    // Public Methods
-    // =========================================================================
 
     /**
      * @inheritdoc
@@ -77,22 +71,18 @@ class pdfrenderer extends Plugin
         );
 
         Event::on(
-            Plugins::class,
-            Plugins::EVENT_AFTER_INSTALL_PLUGIN,
-            function (PluginEvent $event) {
-                if ($event->plugin === $this) {
-                }
-            }
-        );
-
-        Event::on(
             Elements::class,
             Elements::EVENT_BEFORE_SAVE_ELEMENT,
             function ($event) {
+                if (ElementHelper::isDraftOrRevision($event->element)) {
+                    return;
+                }
+
+
                 $pdfUrl = Craft::$app->config->general->pdfServiceUrl;
                 if(
                     $pdfUrl
-                    && (int)$event->element->productPdfStatus === 3
+                    && (int)$event->element->productPdfStatus === 0
                     && $event->element->enabled
                     && $event->element->id
                     && $event->element->uri
@@ -115,8 +105,4 @@ class pdfrenderer extends Plugin
             __METHOD__
         );
     }
-
-    // Protected Methods
-    // =========================================================================
-
 }
