@@ -17,6 +17,7 @@ use Craft;
 use craft\base\ElementInterface;
 use craft\base\Field;
 use craft\helpers\Db;
+use craft\helpers\ElementHelper;
 use yii\db\Schema;
 use craft\helpers\Json;
 
@@ -29,7 +30,7 @@ class Pdfresource extends Field
 {
     // Public Properties
     // =========================================================================
-    public $codes = [0, 1, 2, 3];
+    public $codes = [0, 1, 2];
     public $error_code = 2;
 
     // Static Methods
@@ -57,22 +58,9 @@ class Pdfresource extends Field
     /**
      * @inheritdoc
      */
-    public function rules()
-    {
-        $rules = parent::rules();
-        return $rules;
-    }
-
-    /**
-     * @inheritdoc
-     */
     public function serializeValue($value, ElementInterface $element = null)
     {
-        // Limit options that can be saved
-        if (in_array((int)$value, $this->codes)) {
-            return (int)$value;
-        }
-        return $error_code;
+        return ((int)$value != 1) ? 0 : 1;
     }
 
     /**
@@ -107,6 +95,7 @@ class Pdfresource extends Field
                 'namespacedId' => $namespacedId,
                 'slug' => $element->slug,
                 'volume' => $volume,
+                'isDraftOrRevision' => ElementHelper::isDraftOrRevision($element)
             ]
         );
     }
