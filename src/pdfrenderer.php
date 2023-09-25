@@ -27,6 +27,7 @@ use craft\events\ElementEvent;
 use craft\events\ElementStructureEvent;
 use craft\helpers\ElementHelper;
 use craft\services\Elements;
+use craft\elements\Entry;
 
 use yii\base\Event;
 
