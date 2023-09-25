@@ -78,11 +78,17 @@ class pdfrenderer extends Plugin
                     return;
                 }
 
+                $entry = Entry::findOne($event->element->id);
+
+                if(!$entry || $entry->sectionId !== 2) {
+                    return;
+                }
 
                 $pdfUrl = Craft::$app->config->general->pdfServiceUrl;
                 if(
                     $pdfUrl
                     && (int)$event->element->productPdfStatus === 0
+                    && $event->element->productType
                     && $event->element->enabled
                     && $event->element->id
                     && $event->element->uri
