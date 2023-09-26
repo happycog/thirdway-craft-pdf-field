@@ -27,7 +27,6 @@ use craft\events\ElementEvent;
 use craft\events\ElementStructureEvent;
 use craft\helpers\ElementHelper;
 use craft\services\Elements;
-use craft\elements\Entry;
 
 use yii\base\Event;
 
@@ -76,12 +75,7 @@ class pdfrenderer extends Plugin
             Elements::EVENT_BEFORE_SAVE_ELEMENT,
             function ($event) {
                 if (ElementHelper::isDraftOrRevision($event->element)) {
-                    return;
-                }
-
-                $entry = Entry::findOne($event->element->id);
-
-                if(!$entry || $entry->sectionId !== 2) {
+                    Craft::info('Skipping draft/revision for ' . $event->element->id, __METHOD__);
                     return;
                 }
 
@@ -89,7 +83,6 @@ class pdfrenderer extends Plugin
                 if(
                     $pdfUrl
                     && (int)$event->element->productPdfStatus === 0
-                    && $event->element->productType
                     && $event->element->enabled
                     && $event->element->id
                     && $event->element->uri
