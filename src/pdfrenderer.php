@@ -70,31 +70,31 @@ class pdfrenderer extends Plugin
             }
         );
 
-        Event::on(
-            Elements::class,
-            Elements::EVENT_BEFORE_SAVE_ELEMENT,
-            function ($event) {
-                if (ElementHelper::isDraftOrRevision($event->element)) {
-                    Craft::info('Skipping draft/revision for ' . $event->element->id, __METHOD__);
-                    return;
-                }
+        // Event::on(
+        //     Elements::class,
+        //     Elements::EVENT_BEFORE_SAVE_ELEMENT,
+        //     function ($event) {
+        //         if (ElementHelper::isDraftOrRevision($event->element)) {
+        //             Craft::info('Skipping draft/revision for ' . $event->element->id, __METHOD__);
+        //             return;
+        //         }
 
-                $pdfUrl = Craft::$app->config->general->pdfServiceUrl;
-                if(
-                    $pdfUrl
-                    && (int)$event->element->productPdfStatus === 0
-                    && $event->element->enabled
-                    && $event->element->id
-                    && $event->element->uri
-                ) {
-                    \Craft::$app->getQueue()->delay(60)->push(new PurgeCacheJob([
-                            'id' => $event->element->id,
-                            'path' => $pdfUrl . 'pdf/' . $event->element->id . "/" . $event->element->uri
-                        ]
-                    ));
-                }
-            }
-        );
+        //         $pdfUrl = Craft::$app->config->general->pdfServiceUrl;
+        //         if(
+        //             $pdfUrl
+        //             && (int)$event->element->productPdfStatus === 0
+        //             && $event->element->enabled
+        //             && $event->element->id
+        //             && $event->element->uri
+        //         ) {
+        //             \Craft::$app->getQueue()->delay(60)->push(new PurgeCacheJob([
+        //                     'id' => $event->element->id,
+        //                     'path' => $pdfUrl . 'pdf/' . $event->element->id . "/" . $event->element->uri
+        //                 ]
+        //             ));
+        //         }
+        //     }
+        // );
 
         Craft::info(
             Craft::t(
